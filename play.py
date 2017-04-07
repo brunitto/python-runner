@@ -1,6 +1,5 @@
 from sys import exit
 
-# Stage class
 class Stage(object):
 
     def __init__(self):
@@ -22,41 +21,36 @@ class Stage(object):
         print "Fight"
 
 
-# Stage1 class
 class Stage1(Stage):
 
     def play(self):
         print "Stage 1"
 
 
-# Stage2 class
 class Stage2(Stage):
 
     def play(self):
         print "Stage 2"
 
 
-# Stage3 class
 class Stage3(Stage):
 
     def play(self):
         print "Stage 3"
 
 
-# Stage4 class
 class Stage4(Stage):
 
     def play(self):
         print "Stage 4"
 
-# GameOver class
+
 class GameOver(Stage):
 
     def play(self):
         print "GAME OVER!"
 
 
-# Engine class
 class Engine(object):
 
     states = {
@@ -70,7 +64,7 @@ class Engine(object):
             },
             {
                 "input": "talk",
-                "current": "Stage2", 
+                "current": "Stage2",
                 "next": "Stage3"
             },
             {
@@ -96,40 +90,41 @@ class Engine(object):
             stage = globals()[self.current_state]()
             stage.play()
             action = raw_input("> ")
+
             if action == "look":
                 stage.look()
-                for transition in self.states["transitions"]:
-                    if transition["input"] == "look" and transition["current"] == self.current_state:
-                        self.current_state = transition["next"]
-                        continue
+                # DRY
+                transition = [t for t in self.states["transitions"] \
+                    if t["input"] == action and t["current"] == self.current_state][0]
+                self.current_state = transition["next"]
+                continue
             elif action == "talk":
                 stage.talk()
-                for transition in self.states["transitions"]:
-                    if transition["input"] == "talk" and transition["current"] == self.current_state:
-                        self.current_state = transition["next"]
-                        continue
+                # DRY
+                transition = [t for t in self.states["transitions"] \
+                    if t["input"] == action and t["current"] == self.current_state]
+                self.current_state = transition["next"]
+                continue
             elif action == "joke":
                 stage.joke()
-                for transition in self.states["transitions"]:
-                    if transition["input"] == "joke" and transition["current"] == self.current_state:
-                        self.current_state = transition["next"]
-                        continue
+                # DRY
+                transition = [t for t in self.states["transitions"] \
+                    if t["input"] == action and t["current"] == self.current_state]
+                self.current_state = transition["next"]
+                continue
             elif action == "fight":
                 stage.fight()
-                for transition in self.states["transitions"]:
-                    if transition["input"] == "fight" and transition["current"] == self.current_state:
-                        self.current_state = transition["next"]
-                        continue
+                # DRY
+                transition = [t for t in self.states["transitions"] \
+                    if t["input"] == action and t["current"] == self.current_state]
+                self.current_state = transition["next"]
+                continue
             elif action == "quit":
                 break
-                exit(0)
             elif action == "help":
                 print "Help: valid commands are look, talk, joke, fight, help and quit"
             else:
                 print "Invalid action, try something else."
 
 
-# Start the engine and play
-engine = Engine()
-engine.play()
-
+Engine().play()
