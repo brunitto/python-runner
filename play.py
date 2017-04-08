@@ -35,7 +35,6 @@ class Stage1(Stage):
         """Play the stage"""
         print "Stage 1"
 
-
 class Stage2(Stage):
     """Stage2 class"""
 
@@ -68,10 +67,36 @@ class GameOver(Stage):
         print "GAME OVER!"
 
 
+class Player(object):
+    """Player class"""
+    def __init__(self, name, health, money):
+        """Initialize a player"""
+        self.name = name
+        self.health = health
+        self.money = money
+
+
+class Replicant(object):
+    """Replicant class"""
+    def __init__(self, name, health, reward):
+        """Initialize a replicant"""
+        self.name = name
+        self.health = health
+        self.reward = reward
+
+
+class Fight(object):
+    """Fight class"""
+    def __init__(self, player, replicant):
+        """Initialize a fight"""
+        self.player = player
+        self.replicant = replicant
+
+
 class Engine(object):
     """Engine class"""
 
-    states = {
+    stages = {
         "initial": "Stage1",
         "final": "GameOver",
         "transitions": [
@@ -98,47 +123,37 @@ class Engine(object):
         ]
     }
 
-    current_state = states["initial"]
+    current_stage = stages["initial"]
 
-    def current(self):
-        """Return the current state"""
-        return self.current_state
+    def next_stage(self, action):
+        """Get the next stage from an action, passing through the FSM"""
+        for transition in self.stages["transitions"]:
+            if transition["input"] == action and \
+                transition["current"] == self.current_stage:
+                return transition["next"]
+
+        return self.current_stage
 
     def play(self):
         """Play the game"""
-        while self.current_state != self.states["final"]:
-            stage = globals()[self.current_state]()
-            stage.play()
-            action = raw_input("> ")
+        while self.current_stage != self.stages["final"]:
 
+            stage = globals()[self.current_stage]()
+            stage.play()
+
+            action = raw_input("> ")
             if action == "look":
                 stage.look()
-                # DRY
-                for transition in self.states["transitions"]:
-                    if transition["input"] == action \
-                        and transition["current"] == self.current_state:
-                        self.current_state = transition["next"]
+                self.current_stage = self.next_stage("look")
             elif action == "talk":
                 stage.talk()
-                # DRY
-                for transition in self.states["transitions"]:
-                    if transition["input"] == action \
-                        and transition["current"] == self.current_state:
-                        self.current_state = transition["next"]
+                self.current_stage = self.next_stage("talk")
             elif action == "joke":
                 stage.joke()
-                # DRY
-                for transition in self.states["transitions"]:
-                    if transition["input"] == action \
-                        and transition["current"] == self.current_state:
-                        self.current_state = transition["next"]
+                self.current_stage = self.next_stage("joke")
             elif action == "fight":
                 stage.fight()
-                # DRY
-                for transition in self.states["transitions"]:
-                    if transition["input"] == action \
-                        and transition["current"] == self.current_state:
-                        self.current_state = transition["next"]
+                self.current_stage = self.next_stage("fight")
             elif action == "quit":
                 break
             elif action == "help":
@@ -149,4 +164,5 @@ class Engine(object):
         exit(0)
 
 
-Engine().play()
+ENGINE = Engine()
+ENGINE.play()
