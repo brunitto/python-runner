@@ -13,6 +13,7 @@ class Console(object):
         os.system('cls' if os.name == 'nt' else 'clear')
 
     def simulate_typing(self, message):
+        """Simulate typeing"""
         for offset in range(0, len(message)):
             time.sleep(0.04)
             sys.stdout.write(message[offset])
