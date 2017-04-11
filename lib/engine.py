@@ -69,6 +69,11 @@ class Engine(object):
                 "next": "WashingtonBattle"
             },
             {
+                "current": "WashingtonMemorial",
+                "input": "joke",
+                "next": "Death"
+            },
+            {
                 "current": "WashingtonBattle",
                 "input": "attack",
                 "next": "Death"
@@ -102,6 +107,20 @@ class Engine(object):
 
     def play(self):
         """Play the game"""
+        print ""
+        print "Welcome to Python Runner"
+        print ""
+        print "You're Peckard, a bounty-hunter that captures replicants for"
+        print "money. The year is 2019 and some rebel replicants stole a"
+        print "ship and returned to earth to make some trouble. Your mission"
+        print "is to find and capture these replicants as soon as possible."
+        print "There are rumours about these replicants in 4 famous capitals,"
+        print "including: Tokyo, Cairo, London and Washington. The first stop"
+        print "is Tokyo..."
+        print ""
+
+        raw_input("Press <ENTER> to continue...")
+
         while self.current_stage != self.stages["final"]:
 
             # Get the stage class symbol using the stage name as string
