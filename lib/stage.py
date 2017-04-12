@@ -11,28 +11,57 @@ class Stage(object):
 
     def desc(self):
         """Describes the stage"""
-        self.console.simulate_typing("This is a generic stage.")
+
+        action = """
+This is a generic stage.
+"""
+        self.console.simulate_typing(action)
 
     def look(self):
         """Look action"""
-        print "Look"
+
+        action = """
+You look around, nothing happens
+"""
+        self.console.simulate_typing(action)
 
     def talk(self):
         """Talk action"""
-        print "Talk"
+
+        action = """
+You talk with no one, nothing happens
+"""
+        self.console.simulate_typing(action)
 
     def joke(self):
         """Joke action"""
-        print "Joke"
+
+        action = """
+You drop an epic joke, nothing happens
+"""
+        self.console.simulate_typing(action)
 
     def fight(self):
         """Fight action"""
-        print "Fight"
+
+        action = """
+You start a fight, alone, nothing happens
+"""
+
+        self.console.simulate_typing(action)
 
     def attack(self):
         """Attack action"""
-        print "Attack"
+
+        action = """
+You attack, the air, nothing happens
+"""
+        self.console.simulate_typing(action)
 
     def roll(self):
         """Roll action"""
-        print "Roll"
+        
+        action = """
+You roll over, alone, nothing happens
+"""
+        self.console.simulate_typing(action)
