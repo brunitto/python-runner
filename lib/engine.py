@@ -121,12 +121,7 @@ class Engine(object):
 
         raw_input("Press <ENTER> to continue...")
 
-        played_stages = {
-            "TokyoFishMarket": False,
-            "CairoMuseum": False,
-            "LondonAbbey": False,
-            "WashingtonMemorial": False,
-        }
+        last_played_stage = None
 
         while self.current_stage != self.stages["final"]:
 
@@ -134,11 +129,11 @@ class Engine(object):
             stage = globals()[self.current_stage]()
 
             # Avoid to describe already played stages
-            if played_stages[self.current_stage]:
+            if last_played_stage == self.current_stage:
                 pass
             else:
                 stage.desc()
-                played_stages[self.current_stage] = True
+                last_played_stage = self.current_stage
 
             action = raw_input("> ")
             if action in self.valid_actions:
