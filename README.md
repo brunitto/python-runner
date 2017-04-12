@@ -3,7 +3,7 @@
 Find the replicants, get the reward, do not die.
 
 This is a really simple console game written in python, as defined in
-[Learn Python the Hard Way exercise 45](http://learnpythonthehardway.org/book/ex45.html).
+[Learn Python the Hard Way exercise 45](https://learnpythonthehardway.org/book/ex45.html).
 
 ## Requirements
 
@@ -11,12 +11,14 @@ This is a really simple console game written in python, as defined in
 
 ## How to play
 
-[Download the latest release](http://github.com/brunitto/python-runner/archive/stable.zip)
+[Download the latest release](https://github.com/brunitto/python-runner/archive/stable.zip)
 at GitHub, extract and execute the `play.py` script:
 
-    cd ~/Games
+    mkdir /tmp/games
+    cd /tmp/games
     wget http://github.com/brunitto/python-runner/archive/stable.zip
-    cd python-runner
+    unzip stable.zip
+    cd python-runner-stable
     python play.py
 
 The game will describe a stage and wait for a valid command. The valid commands are:
@@ -57,14 +59,14 @@ functions from the `Console` class within `lib/console.py` module.
 
 ## Issues
 
-[Report an issue at GitHub](http://github.com/brunitto/python-runner/issues)
+[Report an issue at GitHub](https://github.com/brunitto/python-runner/issues)
 
 ## Contribure
 
-[Check the official repository at GitHub](http://github.com/brunitto/python-runner)
+[Check the official repository at GitHub](https://github.com/brunitto/python-runner)
 
 ## References
 
-1. [Learn Python the Hard Way](http://learnpythonthehardway.org)
-2. [PEP-8](http://www.python.org/dev/peps/pep-0008)
-3. [Finite-state machine](http://en.wikipedia.org/wiki/Finite-state_machine)
+1. [Learn Python the Hard Way](https://learnpythonthehardway.org)
+2. [PEP-8](https://www.python.org/dev/peps/pep-0008)
+3. [Finite-state machine](https://en.wikipedia.org/wiki/Finite-state_machine)
