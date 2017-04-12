@@ -12,7 +12,7 @@ class TokyoFishMarket(Stage):
 It's about 8AM and you are in a famous fish market in Tokyo. Some contacts
 told you about a really strange man fooling around, getting angry everytime
 someone drops a good joke. Everything smells like fish and a lot of different
-noises. All of sudden, at your left, looks like something is getting closer...
+noises. All of sudden, at your left, looks like someone is getting closer...
 """
         self.console.simulate_typing(action)
 
