@@ -11,7 +11,7 @@ from lib.stages.london_battle import LondonBattle
 from lib.stages.washington_memorial import WashingtonMemorial
 from lib.stages.washington_battle import WashingtonBattle
 
-class Engine:
+class Engine(object):
     """Engine class"""
 
     stages = {
@@ -107,19 +107,19 @@ class Engine:
 
     def play(self):
         """Play the game"""
-        print("")
-        print("Welcome to Python Runner")
-        print("")
-        print("You're Peckard, a bounty-hunter that captures replicants for")
-        print("money. The year is 2019 and some rebel replicants stole a")
-        print("ship and returned to earth to make some trouble. Your mission")
-        print("is to find and capture these replicants as soon as possible.")
-        print("There are rumours about these replicants in 4 famous capitals,")
-        print("including: Tokyo, Cairo, London and Washington. The first stop")
-        print("is Tokyo...")
-        print("")
+        print ""
+        print "Welcome to Python Runner"
+        print ""
+        print "You're Peckard, a bounty-hunter that captures replicants for"
+        print "money. The year is 2019 and some rebel replicants stole a"
+        print "ship and returned to earth to make some trouble. Your mission"
+        print "is to find and capture these replicants as soon as possible."
+        print "There are rumours about these replicants in 4 famous capitals,"
+        print "including: Tokyo, Cairo, London and Washington. The first stop"
+        print "is Tokyo..."
+        print ""
 
-        input("Press <ENTER> to continue...")
+        raw_input("Press <ENTER> to continue...")
 
         last_played_stage = None
 
@@ -135,10 +135,10 @@ class Engine:
                 stage.desc()
                 last_played_stage = self.current_stage
 
-            action = input("> ")
+            action = raw_input("> ")
             if action in self.valid_actions:
                 if action == "help":
-                    print("Valid actions are %s" % (", ".join(self.valid_actions)))
+                    print "Valid actions are %s" % (", ".join(self.valid_actions))
                 elif action == "quit":
                     exit(0)
                 else:
@@ -149,7 +149,7 @@ class Engine:
                     # Set the current stage to the next valid stage
                     self.current_stage = self.next_stage(action)
             else:
-                print("Invalid action, try something else.")
+                print "Invalid action, try something else."
 
         # Play the final stage
         stage = globals()[self.stages["final"]]()
