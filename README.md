@@ -7,7 +7,7 @@ This is a really simple console game written in python, as defined in
 
 ## Requirements
 
-1. Python 2.7.3+
+1. Python 3+
 
 ## How to play
 

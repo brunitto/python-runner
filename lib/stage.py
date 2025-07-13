@@ -3,7 +3,7 @@
 from lib.console import Console
 
 
-class Stage(object):
+class Stage:
     """Stage class"""
 
     def __init__(self):
